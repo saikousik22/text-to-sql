@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Assistant | Text-to-SQL AI</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-database"></i>
+                <span>SQL.AI</span>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="section-title">Database Schema</h3>
+                <div id="table-list" class="table-list">
+                    <!-- Tables will be loaded here -->
+                    <div class="table-item">
+                        <div class="table-name">Loading schema...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section" style="margin-top: auto;">
+                <button id="btn-seed" class="table-item" style="width: 100%; border: 1px solid var(--accent-primary); color: var(--accent-primary); background: transparent;">
+                    <i class="fas fa-magic"></i> Seed Sample Data
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1 style="font-family: 'Outfit'; font-size: 32px; margin-bottom: 8px;">Ask your Database</h1>
+                <p style="color: var(--text-muted);">Enter a natural language question to generate and execute SQL.</p>
+            </header>
+
+            <section class="query-area">
+                <div class="query-container">
+                    <textarea id="query-input" placeholder="e.g. Who are the top 5 highest paid employees in Engineering?"></textarea>
+                    <button id="btn-run" class="btn-run">
+                        <i class="fas fa-play"></i> &nbsp; Run Query
+                    </button>
+                </div>
+            </section>
+
+            <section id="result-area" class="result-section">
+                <!-- Placeholder / Empty State -->
+                <div id="empty-state" class="empty-state">
+                    <i class="fas fa-terminal"></i>
+                    <p>Results will appear here...</p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loader" class="loader">
+                    <div class="spinner"></div>
+                </div>
+
+                <!-- Actual Results (Hidden initially) -->
+                <div id="results-content" style="display: none; flex-direction: column; gap: 24px;">
+                    <div>
+                        <h4 class="section-title">Generated SQL</h4>
+                        <div id="sql-display" class="sql-display"></div>
+                    </div>
+                    <div>
+                        <h4 class="section-title">Result Set</h4>
+                        <div id="table-wrapper" class="table-wrapper">
+                            <table id="results-table">
+                                <thead id="table-head"></thead>
+                                <tbody id="table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
